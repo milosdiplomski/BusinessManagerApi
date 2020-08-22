@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WZNapnuWBS4ly2kqHGTVzIz5CqJ38z/2CeJ0h8oSFYTfjuMlTpaWS6MKNDsjF/+/uM62x0inZ4azpfxYaZb/nw==",
+  "dgSpecHash": "e8S1E3xREOApc5r2/+sVTQ4uho2prRcknB5WaILMjeOvtTqDKKTsbGbyM3r0MhpKxH1Nq7PZyOplHomv8Nhw2Q==",
   "success": true,
   "projectFilePath": "C:\\Projects\\BusinessManagerApiSolution\\src\\BusinessManagerApi\\BusinessManagerApi.csproj",
   "expectedPackageFiles": [
@@ -75,6 +75,8 @@
     "C:\\Users\\Milos\\.nuget\\packages\\serilog.sinks.console\\3.1.1\\serilog.sinks.console.3.1.1.nupkg.sha512",
     "C:\\Users\\Milos\\.nuget\\packages\\serilog.sinks.debug\\1.0.1\\serilog.sinks.debug.1.0.1.nupkg.sha512",
     "C:\\Users\\Milos\\.nuget\\packages\\serilog.sinks.file\\4.1.0\\serilog.sinks.file.4.1.0.nupkg.sha512",
+    "C:\\Users\\Milos\\.nuget\\packages\\serilog.sinks.periodicbatching\\2.1.1\\serilog.sinks.periodicbatching.2.1.1.nupkg.sha512",
+    "C:\\Users\\Milos\\.nuget\\packages\\serilog.sinks.seq\\4.0.0\\serilog.sinks.seq.4.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
@@ -105,7 +107,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.net.http\\4.3.0\\system.net.http.4.3.0.nupkg.sha512",
+    "C:\\Users\\Milos\\.nuget\\packages\\system.net.http\\4.3.2\\system.net.http.4.3.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.net.nameresolution\\4.3.0\\system.net.nameresolution.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.net.primitives\\4.3.0\\system.net.primitives.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.net.sockets\\4.3.0\\system.net.sockets.4.3.0.nupkg.sha512",
