@@ -8,6 +8,7 @@ using BusinessManager.DataAccess.UnitOfWork;
 using BusinessManager.DataAccess.UnitOfWork.Abstractions;
 using BusinessManagerApi.Data;
 using BusinessManagerApi.Data.Repository;
+using BusinessManagerApi.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -58,9 +59,12 @@ namespace BusinessManagerApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseSerilogRequestLogging();
+
+            //app.ConfigureExceptionHandler();
+            app.ConfigureCustomExceptionMiddleware();
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 

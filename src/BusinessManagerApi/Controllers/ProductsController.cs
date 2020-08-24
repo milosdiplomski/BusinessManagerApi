@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BusinessManager.DataAccess.UnitOfWork.Abstractions;
 using BusinessManager.Shared.BusinessLogic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace BusinessManagerApi.Controllers
 {
@@ -15,11 +16,13 @@ namespace BusinessManagerApi.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private ProductsBusinessLogic _productsBusinessLogic;
+        private readonly ILogger<ProductsController> _logger;
 
-        public ProductsController(IUnitOfWork unitOfWork)
+        public ProductsController(IUnitOfWork unitOfWork, ILogger<ProductsController> log)
         {
             _unitOfWork = unitOfWork;
-            _productsBusinessLogic = new ProductsBusinessLogic(_unitOfWork);
+            _logger = log;
+            _productsBusinessLogic = new ProductsBusinessLogic(_unitOfWork, _logger);
         }
 
         [HttpGet]
