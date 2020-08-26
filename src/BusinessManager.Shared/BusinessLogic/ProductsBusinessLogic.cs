@@ -27,15 +27,14 @@ namespace BusinessManager.Shared.BusinessLogic
         {
             _logger.LogInformation("pera method started");
 
-             throw new Exception("An unexpected exception occured");
-            //try
-            //{
-            //    return _unitOfWork.Clients.GetAll().ToList();
-            //}
-            //catch(Exception ex)
-            //{
-            //    throw new Exception("An unexpected exception occured", ex.InnerException);
-            //}
+            try
+            {
+                return _unitOfWork.Clients.GetAll().ToList();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("An unexpected exception occured", ex.InnerException);
+            }
         }
     }
 }

@@ -19,6 +19,7 @@ namespace BusinessManagerApi.Middleware
             _logger = logger;
             _next = next;
         }
+
         public async Task InvokeAsync(HttpContext httpContext)
         {
             try
@@ -31,6 +32,7 @@ namespace BusinessManagerApi.Middleware
                 await HandleExceptionAsync(httpContext, ex);
             }
         }
+
         private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             context.Response.ContentType = "application/json";
