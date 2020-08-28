@@ -7,7 +7,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BusinessManager.Shared.BusinessLogic
 {
@@ -23,17 +25,19 @@ namespace BusinessManager.Shared.BusinessLogic
             _logger = logger;
         }
 
-        public IEnumerable<Clients> pera()
+        public async Task<IEnumerable<Products>> GetAllProducts()
         {
-            _logger.LogInformation("pera method started");
-
             try
             {
-                return _unitOfWork.Clients.GetAll().ToList();
+                var products = _unitOfWork.Products.GetAll().ToList();
+                _unitOfWork.Complete();
+
+                return products;
             }
             catch(Exception ex)
             {
-                throw new Exception("An unexpected exception occured", ex.InnerException);
+                _logger.LogError($"Exception occured in {GetType().FullName} in method {MethodBase.GetCurrentMethod().Name}", ex);
+                throw;
             }
         }
     }

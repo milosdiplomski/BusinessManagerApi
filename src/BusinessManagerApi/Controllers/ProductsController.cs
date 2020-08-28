@@ -34,14 +34,22 @@ namespace BusinessManagerApi.Controllers
         /// <param name="item"></param>
         /// <returns>List of products</returns>
         /// <response code="200">Returns the list of items</response>
-        
+        /// <response code="400">Bad request</response>
         [Route("GetProducts")]
         [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.OK)]
-        public IActionResult GetProducts()
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> GetProducts()
         {
-            var popularDevelopers = _productsBusinessLogic.pera();
-            return Ok(popularDevelopers);
+            try
+            {
+                var products = await _productsBusinessLogic.GetAllProducts();
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

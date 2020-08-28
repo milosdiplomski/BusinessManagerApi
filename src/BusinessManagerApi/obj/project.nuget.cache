@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "lCi41/hPg69T7aS8buqHyE2udzBs/aj0ApILW1k9AByGlYSrSZVdM97qcvftgOn9buF7MQv7oHfMY09tXO4nvg==",
+  "dgSpecHash": "jGV+g/mnscGjKuzeFaZvJMMkM6E3nhZul00q+24KDQ51INXTz3tl/p6ZmVQOQdzJXKbt13qATWA2I48pgWFzug==",
   "success": true,
   "projectFilePath": "C:\\Projects\\BusinessManagerApiSolution\\src\\BusinessManagerApi\\BusinessManagerApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Milos\\.nuget\\packages\\fluentvalidation\\9.1.3\\fluentvalidation.9.1.3.nupkg.sha512",
     "C:\\Users\\Milos\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Milos\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\Milos\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

@@ -183,6 +183,10 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.1.3, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",

@@ -11,8 +11,7 @@ namespace BusinessManager.DataAccess.Migrations
                 name: "Clients",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
@@ -31,8 +30,7 @@ namespace BusinessManager.DataAccess.Migrations
                 name: "Configuration",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     TotalPrice = table.Column<int>(nullable: false),
                     WhoOrdered = table.Column<string>(nullable: true)
@@ -46,8 +44,7 @@ namespace BusinessManager.DataAccess.Migrations
                 name: "Provider",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
@@ -66,8 +63,7 @@ namespace BusinessManager.DataAccess.Migrations
                 name: "Sale",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(nullable: false),
                     Buyer = table.Column<string>(nullable: true),
                     SaleDate = table.Column<DateTime>(nullable: false),
                     TotalPrice = table.Column<double>(nullable: false)
@@ -81,8 +77,7 @@ namespace BusinessManager.DataAccess.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(nullable: false),
                     Category = table.Column<string>(nullable: true),
                     Barcode = table.Column<string>(nullable: true),
                     SerialNumber = table.Column<Guid>(nullable: false),
@@ -93,8 +88,8 @@ namespace BusinessManager.DataAccess.Migrations
                     PurchaseDate = table.Column<DateTime>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     Others = table.Column<string>(nullable: true),
-                    ConfigurationId = table.Column<int>(nullable: true),
-                    SaleId = table.Column<int>(nullable: true)
+                    ConfigurationId = table.Column<Guid>(nullable: true),
+                    SaleId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {

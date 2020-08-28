@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessManager.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200820045947_Initial")]
-    partial class Initial
+    [Migration("20200827061913_UpdateClients")]
+    partial class UpdateClients
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,16 +23,18 @@ namespace BusinessManager.DataAccess.Migrations
 
             modelBuilder.Entity("BusinessManager.Models.Models.Clients", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -59,10 +61,9 @@ namespace BusinessManager.DataAccess.Migrations
 
             modelBuilder.Entity("BusinessManager.Models.Models.Configuration", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -80,10 +81,9 @@ namespace BusinessManager.DataAccess.Migrations
 
             modelBuilder.Entity("BusinessManager.Models.Models.Products", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Barcode")
                         .HasColumnType("nvarchar(max)");
@@ -91,8 +91,8 @@ namespace BusinessManager.DataAccess.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ConfigurationId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("ConfigurationId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Others")
                         .HasColumnType("nvarchar(max)");
@@ -106,8 +106,8 @@ namespace BusinessManager.DataAccess.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SaleId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("SaleId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("SalePrice")
                         .HasColumnType("int");
@@ -132,10 +132,9 @@ namespace BusinessManager.DataAccess.Migrations
 
             modelBuilder.Entity("BusinessManager.Models.Models.Provider", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -168,10 +167,9 @@ namespace BusinessManager.DataAccess.Migrations
 
             modelBuilder.Entity("BusinessManager.Models.Models.Sale", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Buyer")
                         .HasColumnType("nvarchar(max)");

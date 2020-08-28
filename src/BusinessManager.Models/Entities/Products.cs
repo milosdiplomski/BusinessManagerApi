@@ -4,7 +4,7 @@ namespace BusinessManager.Models.Models
 {
     public class Products
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Category { get; set; }
         public string Barcode { get; set; }
         public Guid SerialNumber { get; set; }
