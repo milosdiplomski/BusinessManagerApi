@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using BusinessManager.DataAccess.Abstractions;
 using BusinessManager.DataAccess.Repositories;
 using BusinessManager.DataAccess.UnitOfWork;
@@ -37,15 +38,9 @@ namespace BusinessManagerApi
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            #region Repositories
+            services.AddAutoMapper(typeof(Startup));
 
-            services.AddTransient<IProductsRepository, ProductsRepository>();
-            services.AddTransient<IClientsRepository, ClientsRepository>();
-            services.AddTransient<IConfigurationRepository, ConfigurationRepository>();
-            services.AddTransient<IProviderRepository, ProviderRepository>();
-            services.AddTransient<ISaleRepository, SaleRepository>();
-
-            #endregion
+            RegisterRepositories(services);
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
@@ -106,6 +101,15 @@ namespace BusinessManagerApi
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void RegisterRepositories(IServiceCollection services)
+        {
+            services.AddTransient<IProductsRepository, ProductsRepository>();
+            services.AddTransient<IClientsRepository, ClientsRepository>();
+            services.AddTransient<IConfigurationRepository, ConfigurationRepository>();
+            services.AddTransient<IProviderRepository, ProviderRepository>();
+            services.AddTransient<ISaleRepository, SaleRepository>();
         }
     }
 }

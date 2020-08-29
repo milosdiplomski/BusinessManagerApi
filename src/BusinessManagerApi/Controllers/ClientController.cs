@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using AutoMapper;
 using BusinessManager.DataAccess.UnitOfWork.Abstractions;
 using BusinessManager.Models.Models;
 using BusinessManager.Shared.BusinessLogic;
@@ -18,14 +17,16 @@ namespace BusinessManagerApi.Controllers
     {
 
         private readonly IUnitOfWork _unitOfWork;
-        private ClientsBusinessLogic _clientsBusinessLogic;
         private readonly ILogger<ClientController> _logger;
+        private readonly IMapper _mapper;
+        private ClientsBusinessLogic _clientsBusinessLogic;
 
-        public ClientController(IUnitOfWork unitOfWork, ILogger<ClientController> log)
+        public ClientController(IUnitOfWork unitOfWork, ILogger<ClientController> log, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _logger = log;
-            _clientsBusinessLogic = new ClientsBusinessLogic(_unitOfWork, _logger);
+            _mapper = mapper;
+            _clientsBusinessLogic = new ClientsBusinessLogic(_unitOfWork, _logger, _mapper);
         }
 
         /// <summary>
@@ -42,9 +43,23 @@ namespace BusinessManagerApi.Controllers
         {
             try
             {
+                if (client == null)
+                {
+                    _logger.LogError("Owner object sent from client is null.");
+                    return BadRequest("Owner object is null");
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    _logger.LogError("Invalid owner object sent from client.");
+                    return BadRequest("Invalid model object");
+                }
+
                 var clientFromDb = await _clientsBusinessLogic.CreateClient(client);
 
-                return Created(string.Concat("api/Client/", clientFromDb.Id), clientFromDb);
+                _logger.LogInformation($"Client successfully created");
+
+                return CreatedAtRoute(string.Concat("api/Client/", clientFromDb.Id), clientFromDb);
             }
             catch (Exception ex)
             {
@@ -55,8 +70,8 @@ namespace BusinessManagerApi.Controllers
         /// <summary>
         /// Gets all clients from database.
         /// </summary>
-        /// <param name="client"></param>
-        /// <response code="200">Returns the list of items</response>
+        /// <param name=""></param>
+        /// <response code="200">Returns the list of clients</response>
         /// <response code="400">Bad request</response>
         [Route("GetAllClients")]
         [HttpGet]
@@ -68,11 +83,46 @@ namespace BusinessManagerApi.Controllers
             {
                 var clients = await _clientsBusinessLogic.GetAllClients();
 
+                _logger.LogInformation($"Returned all clients from database.");
+
                 return Ok(clients);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Gets all clients from database.
+        /// </summary>
+        /// <param name=""></param>
+        /// <response code="200">Return client by id</response>
+        /// <response code="500">Internal server error</response>
+        [HttpGet("{id}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetClientById(Guid id)
+        {
+            try
+            {
+                var client = await _clientsBusinessLogic.GetClientById(id);
+
+                if (client == null)
+                {
+                    _logger.LogError($"Client with id: {id}, hasn't been found in db.");
+                    return NotFound();
+                }
+                else
+                {
+                    _logger.LogInformation($"Returned client with id: {id}");
+                    return Ok(client);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside GetClientById action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
             }
         }
 
@@ -89,7 +139,7 @@ namespace BusinessManagerApi.Controllers
         {
             try
             {
-                await _clientsBusinessLogic.DeleteClient(id);
+                await _clientsBusinessLogic.SoftDeleteClient(id);
 
                 return NoContent();
             }
@@ -117,7 +167,7 @@ namespace BusinessManagerApi.Controllers
 
                 return NoContent();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
