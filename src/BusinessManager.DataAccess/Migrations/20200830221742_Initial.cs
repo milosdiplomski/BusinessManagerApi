@@ -12,14 +12,15 @@ namespace BusinessManager.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    PostalCode = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    PIB = table.Column<string>(nullable: true),
-                    Note = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 60, nullable: false),
+                    Address = table.Column<string>(nullable: false),
+                    City = table.Column<string>(nullable: false),
+                    PostalCode = table.Column<string>(nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(maxLength: 60, nullable: false),
+                    PIB = table.Column<string>(maxLength: 6, nullable: false),
+                    Note = table.Column<string>(nullable: true),
+                    Deleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -78,8 +79,8 @@ namespace BusinessManager.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Category = table.Column<string>(nullable: true),
-                    Barcode = table.Column<string>(nullable: true),
+                    Category = table.Column<string>(nullable: false),
+                    Barcode = table.Column<string>(nullable: false),
                     SerialNumber = table.Column<Guid>(nullable: false),
                     PurchasePrice = table.Column<int>(nullable: false),
                     SalePrice = table.Column<int>(nullable: false),
@@ -88,6 +89,7 @@ namespace BusinessManager.DataAccess.Migrations
                     PurchaseDate = table.Column<DateTime>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     Others = table.Column<string>(nullable: true),
+                    Deleted = table.Column<bool>(nullable: false),
                     ConfigurationId = table.Column<Guid>(nullable: true),
                     SaleId = table.Column<Guid>(nullable: true)
                 },

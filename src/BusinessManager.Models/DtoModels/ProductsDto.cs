@@ -1,19 +1,14 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Text;
 
-namespace BusinessManager.Models.Models
+namespace BusinessManager.Models.DtoModels
 {
-    public class Products
+    public class ProductsDto
     {
         public Guid Id { get; set; }
-
-        [Required(ErrorMessage = "Category is required")]
         public string Category { get; set; }
-
-        [Required(ErrorMessage = "Barcode is required")]
         public string Barcode { get; set; }
-
-        [Required(ErrorMessage = "SerialNumber is required")]
         public Guid SerialNumber { get; set; }
         public int PurchasePrice { get; set; }
         public int SalePrice { get; set; }
@@ -22,7 +17,5 @@ namespace BusinessManager.Models.Models
         public DateTime PurchaseDate { get; set; }
         public int Quantity { get; set; }
         public string Others { get; set; }
-        public bool Deleted { get; set; }
-
     }
 }

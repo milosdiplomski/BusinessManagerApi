@@ -45,13 +45,13 @@ namespace BusinessManagerApi.Controllers
             {
                 if (client == null)
                 {
-                    _logger.LogError("Owner object sent from client is null.");
-                    return BadRequest("Owner object is null");
+                    _logger.LogError("Client object sent from client is null.");
+                    return BadRequest("Client object is null");
                 }
 
                 if (!ModelState.IsValid)
                 {
-                    _logger.LogError("Invalid owner object sent from client.");
+                    _logger.LogError("Invalid client object sent from client.");
                     return BadRequest("Invalid model object");
                 }
 
@@ -59,10 +59,11 @@ namespace BusinessManagerApi.Controllers
 
                 _logger.LogInformation($"Client successfully created");
 
-                return CreatedAtRoute(string.Concat("api/Client/", clientFromDb.Id), clientFromDb);
+                return CreatedAtRoute("GetClientById", new { id = clientFromDb.Id }, clientFromDb);
             }
             catch (Exception ex)
             {
+                _logger.LogError($"Something went wrong inside GetAllClients action: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }
@@ -89,6 +90,7 @@ namespace BusinessManagerApi.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError($"Something went wrong inside GetAllClients action: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }
@@ -99,7 +101,7 @@ namespace BusinessManagerApi.Controllers
         /// <param name=""></param>
         /// <response code="200">Return client by id</response>
         /// <response code="500">Internal server error</response>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetClientById")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> GetClientById(Guid id)
@@ -145,6 +147,7 @@ namespace BusinessManagerApi.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError($"Something went wrong inside SoftDeleteClient action: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }
@@ -163,12 +166,24 @@ namespace BusinessManagerApi.Controllers
         {
             try
             {
+                if (client == null)
+                {
+                    _logger.LogError("Client object sent from client is null.");
+                    return BadRequest("Client object is null");
+                }
+                if (!ModelState.IsValid)
+                {
+                    _logger.LogError("Invalid Client object sent from client.");
+                    return BadRequest("Invalid model object");
+                }
+
                 _clientsBusinessLogic.UpdateClient(id, client);
 
                 return NoContent();
             }
             catch (Exception ex)
             {
+                _logger.LogError($"Something went wrong inside UpdateClient action: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }

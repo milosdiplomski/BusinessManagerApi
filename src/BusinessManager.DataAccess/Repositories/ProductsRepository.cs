@@ -17,6 +17,16 @@ namespace BusinessManager.DataAccess.Repositories
 
         }
 
+        public bool DeleteProduct(Guid id)
+        {
+            var product = _context.Products.FirstOrDefault(x => x.Id.Equals(id));
+
+            product.Deleted = true;
+            _context.SaveChanges();
+
+            return true;
+        }
+
         public IQueryable<Products> GetAllForConnectorSearch(int excludeStatusId)
         {
             return GetAll()

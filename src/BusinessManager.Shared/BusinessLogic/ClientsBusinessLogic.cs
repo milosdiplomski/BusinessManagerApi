@@ -48,6 +48,8 @@ namespace BusinessManager.Shared.BusinessLogic
         {
             try
             {
+                _logger.LogInformation($"Envoke method {MethodBase.GetCurrentMethod().Name}");
+
                 var clients = _unitOfWork.Clients.GetAll()
                     .Where(x => x.Deleted.Equals(false))
                     .OrderBy(o => o.Name)
@@ -70,6 +72,8 @@ namespace BusinessManager.Shared.BusinessLogic
         {
             try
             {
+                _logger.LogInformation($"Envoke method {MethodBase.GetCurrentMethod().Name}");
+
                 var client = _unitOfWork.Clients.GetById(id);
                 _unitOfWork.Complete();
 
@@ -88,6 +92,8 @@ namespace BusinessManager.Shared.BusinessLogic
         {
             try
             {
+                _logger.LogInformation($"Envoke method {MethodBase.GetCurrentMethod().Name}");
+
                 var isDeleted = _unitOfWork.Clients.DeleteClient(id);
 
                 return isDeleted;
@@ -103,6 +109,8 @@ namespace BusinessManager.Shared.BusinessLogic
         {
             try
             {
+                _logger.LogInformation($"Envoke method {MethodBase.GetCurrentMethod().Name}");
+
                 _unitOfWork.Clients.UpdateClient(id, client);
             }
             catch (Exception ex)
