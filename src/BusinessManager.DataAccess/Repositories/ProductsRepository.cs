@@ -2,11 +2,8 @@
 using BusinessManager.Models.Models;
 using BusinessManagerApi.Data;
 using BusinessManagerApi.Data.Repository;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BusinessManager.DataAccess.Repositories
 {
@@ -27,10 +24,22 @@ namespace BusinessManager.DataAccess.Repositories
             return true;
         }
 
-        public IQueryable<Products> GetAllForConnectorSearch(int excludeStatusId)
+        public void UpdateProduct(Guid id, Products product)
         {
-            return GetAll()
-                .AsQueryable();
+            var productToUpdate = _context.Products.FirstOrDefault(x => x.Id.Equals(id));
+
+            productToUpdate.Category = product.Category;
+            productToUpdate.Barcode = product.Barcode;
+            productToUpdate.SerialNumber = product.SerialNumber;
+            productToUpdate.PurchasePrice = product.PurchasePrice;
+            productToUpdate.PurchaseDate = product.PurchaseDate;
+            productToUpdate.SalePrice = product.SalePrice;
+            productToUpdate.Warranty = product.Warranty;
+            productToUpdate.WarrantyExpirationDate = product.WarrantyExpirationDate;
+            productToUpdate.Quantity = product.Quantity;
+            productToUpdate.Others = product.Others;
+
+            _context.SaveChanges();
         }
     }
 }

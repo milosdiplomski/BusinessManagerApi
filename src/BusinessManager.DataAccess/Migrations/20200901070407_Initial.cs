@@ -34,7 +34,8 @@ namespace BusinessManager.DataAccess.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     TotalPrice = table.Column<int>(nullable: false),
-                    WhoOrdered = table.Column<string>(nullable: true)
+                    WhoOrdered = table.Column<string>(nullable: true),
+                    Deleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,7 +54,8 @@ namespace BusinessManager.DataAccess.Migrations
                     PhoneNumber = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     PIB = table.Column<string>(nullable: true),
-                    Note = table.Column<string>(nullable: true)
+                    Note = table.Column<string>(nullable: true),
+                    Deleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,7 +69,8 @@ namespace BusinessManager.DataAccess.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Buyer = table.Column<string>(nullable: true),
                     SaleDate = table.Column<DateTime>(nullable: false),
-                    TotalPrice = table.Column<double>(nullable: false)
+                    TotalPrice = table.Column<double>(nullable: false),
+                    Deleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

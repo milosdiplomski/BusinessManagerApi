@@ -11,6 +11,7 @@ namespace BusinessManager.Models.Models
         public List<Products> Catalog { get; set; }
         public DateTime SaleDate { get; set; }
         public double TotalPrice { get; set; }
+        public bool Deleted { get; set; }
 
     }
 }

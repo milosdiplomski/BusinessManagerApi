@@ -108,5 +108,20 @@ namespace BusinessManager.Shared.BusinessLogic
                 throw;
             }
         }
+
+        public void UpdateProduct(Guid id, Products product)
+        {
+            try
+            {
+                _logger.LogInformation($"Envoke method {MethodBase.GetCurrentMethod().Name}");
+
+                _unitOfWork.Products.UpdateProduct(id, product);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception occured in {GetType().FullName} in method {MethodBase.GetCurrentMethod().Name}", ex);
+                throw;
+            }
+        }
     }
 }

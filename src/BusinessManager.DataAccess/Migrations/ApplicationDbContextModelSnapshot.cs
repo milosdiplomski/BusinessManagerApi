@@ -73,6 +73,9 @@ namespace BusinessManager.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -155,6 +158,9 @@ namespace BusinessManager.DataAccess.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
@@ -186,6 +192,9 @@ namespace BusinessManager.DataAccess.Migrations
 
                     b.Property<string>("Buyer")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("SaleDate")
                         .HasColumnType("datetime2");

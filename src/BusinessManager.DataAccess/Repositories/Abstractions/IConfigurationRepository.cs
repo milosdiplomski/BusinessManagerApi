@@ -8,6 +8,7 @@ namespace BusinessManager.DataAccess.Abstractions
 {
     public interface IConfigurationRepository : IGenericRepository<Configuration>
     {
-
+        bool DeleteConfiguration(Guid id);
+        void UpdateConfiguration(Guid id, Configuration config);
     }
 }

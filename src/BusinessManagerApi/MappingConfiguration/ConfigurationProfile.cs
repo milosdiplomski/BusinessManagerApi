@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using BusinessManager.Models.DtoModels;
+using BusinessManager.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace BusinessManagerApi.MappingConfiguration
     {
         public ConfigurationProfile()
         {
-
+            CreateMap<Configuration, ConfigurationDto>().ReverseMap();
         }
     }
 }

@@ -48,17 +48,17 @@ namespace BusinessManagerApi.Controllers
             {
                 if (product == null)
                 {
-                    _logger.LogError("Product object sent from client is null.");
+                    _logger.LogError("Product object sent from product is null.");
                     return BadRequest("Product object is null");
                 }
 
                 if (!ModelState.IsValid)
                 {
-                    _logger.LogError("Invalid Product object sent from client.");
+                    _logger.LogError("Invalid Product object sent from product.");
                     return BadRequest("Invalid model object");
                 }
 
-                var productFromDb = _productsBusinessLogic.CreateProduct(product);
+                var productFromDb = await _productsBusinessLogic.CreateProduct(product);
 
                 _logger.LogInformation($"Product successfully created");
 
@@ -156,16 +156,48 @@ namespace BusinessManagerApi.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong inside SoftDeleteClient action: {ex.Message}");
+                _logger.LogError($"Something went wrong inside SoftDeleteProduct action: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }
 
-        //public async Task<IActionResult> UpdateProduct()
-        //{
+        /// <summary>
+        /// Update product from database.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="product"></param>
+        /// <response code="204">Returns no content</response>
+        /// <response code="400">Bad request</response>
+        [HttpPut("{id}")]
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> UpdateProduct(Guid id, [FromBody] Products product)
+        {
+            try
+            {
+                if(product == null)
+                {
+                    _logger.LogError("Product object sent from product is null.");
+                    return BadRequest("Product object is null");
+                }
 
-        //    return null;
-        //}
+                if (!ModelState.IsValid)
+                {
+                    _logger.LogError("Invalid Product object sent from product.");
+                    return BadRequest("Invalid model object");
+                }
+
+                _productsBusinessLogic.UpdateProduct(id, product);
+
+                return NoContent();
+
+            }
+            catch (Exception exx)
+            {
+                _logger.LogError($"Something went wrong inside UpdateProduct action :{exx.Message}");
+                return BadRequest(exx.Message);
+            }
+        }
 
         //public async Task<IActionResult> SearchProduct()
         //{

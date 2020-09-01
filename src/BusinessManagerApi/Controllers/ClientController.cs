@@ -96,9 +96,9 @@ namespace BusinessManagerApi.Controllers
         }
 
         /// <summary>
-        /// Gets all clients from database.
+        /// Get client by id.
         /// </summary>
-        /// <param name=""></param>
+        /// <param name="id"></param>
         /// <response code="200">Return client by id</response>
         /// <response code="500">Internal server error</response>
         [HttpGet("{id}", Name = "GetClientById")]

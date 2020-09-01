@@ -13,5 +13,6 @@ namespace BusinessManager.Models.Models
         public string Email { get; set; }
         public string PIB { get; set; }
         public string Note { get; set; }
+        public bool Deleted { get; set; }
     }
 }

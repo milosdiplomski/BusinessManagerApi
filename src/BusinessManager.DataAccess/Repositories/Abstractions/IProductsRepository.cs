@@ -9,5 +9,6 @@ namespace BusinessManager.DataAccess.Abstractions
     public interface IProductsRepository : IGenericRepository<Products>
     {
         bool DeleteProduct(Guid id);
+        void UpdateProduct(Guid id, Products product);
     }
 }

@@ -44,7 +44,9 @@ namespace BusinessManagerApi
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+             );
 
             // Register the Swagger Generator service. This service is responsible for genrating Swagger Documents.
             // Note: Add this service at the end after AddMvc() or AddMvcCore().

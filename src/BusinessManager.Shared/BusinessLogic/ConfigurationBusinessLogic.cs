@@ -11,31 +11,31 @@ using System.Threading.Tasks;
 
 namespace BusinessManager.Shared.BusinessLogic
 {
-    public class ClientsBusinessLogic
+    public class ConfigurationBusinessLogic
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger _logger;
         private readonly IMapper _mapper;
 
-        public ClientsBusinessLogic(IUnitOfWork unitOfWork, ILogger logger, IMapper mapper)
+        public ConfigurationBusinessLogic(IUnitOfWork unitOfWork, ILogger logger, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
             _mapper = mapper;
         }
 
-        public async Task<ClientsDto> CreateClient(Clients client)
+        public async Task<ConfigurationDto> CreateConfiguration(Configuration config)
         {
             try
             {
                 _logger.LogInformation($"Envoke method {MethodBase.GetCurrentMethod().Name}");
 
-                _unitOfWork.Clients.Add(client);
+                _unitOfWork.Configuration.Add(config);
                 _unitOfWork.Complete();
 
-                var clientsDTO = _mapper.Map<Clients, ClientsDto>(client);
+                var configurationDto = _mapper.Map<Configuration, ConfigurationDto>(config);
 
-                return clientsDTO;
+                return configurationDto;
             }
             catch (Exception ex)
             {
@@ -44,20 +44,20 @@ namespace BusinessManager.Shared.BusinessLogic
             }
         }
 
-        public async Task<IEnumerable<ClientsDto>> GetAllClients()
+        public async Task<IEnumerable<ConfigurationDto>> GetAllConfigurations()
         {
             try
             {
                 _logger.LogInformation($"Envoke method {MethodBase.GetCurrentMethod().Name}");
 
-                var clients = _unitOfWork.Clients.GetAll()
+                var configs = _unitOfWork.Configuration.GetAll()
                     .Where(x => x.Deleted.Equals(false))
                     .OrderBy(o => o.Name)
                     .ToList();
 
-                var clientsDTO = _mapper.Map<List<Clients>, List<ClientsDto>>(clients);
+                var configurationDto = _mapper.Map<List<Configuration>, List<ConfigurationDto>>(configs);
 
-                return clientsDTO;
+                return configurationDto;
             }
             catch (Exception ex)
             {
@@ -66,17 +66,17 @@ namespace BusinessManager.Shared.BusinessLogic
             }
         }
 
-        public async Task<ClientsDto> GetClientById(Guid id)
+        public async Task<ConfigurationDto> GetConfigurationById(Guid id)
         {
             try
             {
                 _logger.LogInformation($"Envoke method {MethodBase.GetCurrentMethod().Name}");
 
-                var client = _unitOfWork.Clients.GetById(id);
+                var config = _unitOfWork.Configuration.GetById(id);
 
-                var clientDto = _mapper.Map<Clients, ClientsDto>(client);
+                var configurationDto = _mapper.Map<Configuration, ConfigurationDto>(config);
 
-                return clientDto;
+                return configurationDto;
             }
             catch (Exception ex)
             {
@@ -85,13 +85,13 @@ namespace BusinessManager.Shared.BusinessLogic
             }
         }
 
-        public async Task<bool> SoftDeleteClient(Guid id)
+        public async Task<bool> SoftDeleteConfiguration(Guid id)
         {
             try
             {
                 _logger.LogInformation($"Envoke method {MethodBase.GetCurrentMethod().Name}");
 
-                var isDeleted = _unitOfWork.Clients.DeleteClient(id);
+                var isDeleted = _unitOfWork.Configuration.DeleteConfiguration(id);
 
                 return isDeleted;
             }
@@ -102,13 +102,13 @@ namespace BusinessManager.Shared.BusinessLogic
             }
         }
 
-        public void UpdateClient(Guid id, Clients client)
+        public void UpdateConfiguration(Guid id, Configuration config)
         {
             try
             {
                 _logger.LogInformation($"Envoke method {MethodBase.GetCurrentMethod().Name}");
 
-                _unitOfWork.Clients.UpdateClient(id, client);
+                _unitOfWork.Configuration.UpdateConfiguration(id, config);
             }
             catch (Exception ex)
             {
