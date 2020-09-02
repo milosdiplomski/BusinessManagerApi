@@ -63,7 +63,7 @@ namespace BusinessManagerApi.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong inside GetAllClients action: {ex.Message}");
+                _logger.LogError($"Something went wrong inside CreateClient action: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }

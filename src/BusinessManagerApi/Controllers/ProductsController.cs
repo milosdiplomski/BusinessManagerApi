@@ -54,7 +54,7 @@ namespace BusinessManagerApi.Controllers
 
                 if (!ModelState.IsValid)
                 {
-                    _logger.LogError("Invalid Product object sent from product.");
+                    _logger.LogError("Invalid Product object sent from client.");
                     return BadRequest("Invalid model object");
                 }
 
@@ -94,7 +94,7 @@ namespace BusinessManagerApi.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong inside GetAllProducts action: {ex.Message}");
+                _logger.LogError($"Something went wrong inside GetProducts action: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }
@@ -183,7 +183,7 @@ namespace BusinessManagerApi.Controllers
 
                 if (!ModelState.IsValid)
                 {
-                    _logger.LogError("Invalid Product object sent from product.");
+                    _logger.LogError("Invalid Product object sent from client.");
                     return BadRequest("Invalid model object");
                 }
 

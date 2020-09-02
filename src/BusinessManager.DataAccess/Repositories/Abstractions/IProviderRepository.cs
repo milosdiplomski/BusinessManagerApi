@@ -8,6 +8,7 @@ namespace BusinessManager.DataAccess.Abstractions
 {
     public interface IProviderRepository : IGenericRepository<Provider>
     {
-
+        bool DeleteProvider(Guid id);
+        void UpdateProvider(Guid id, Provider provider);
     }
 }

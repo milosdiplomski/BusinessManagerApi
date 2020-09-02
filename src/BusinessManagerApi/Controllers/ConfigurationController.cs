@@ -53,7 +53,7 @@ namespace BusinessManagerApi.Controllers
 
                 if (!ModelState.IsValid)
                 {
-                    _logger.LogError("Invalid Configuration object sent from config.");
+                    _logger.LogError("Invalid Configuration object sent from client.");
                     return BadRequest("Invalid model object");
                 }
 
@@ -176,7 +176,7 @@ namespace BusinessManagerApi.Controllers
                 }
                 if (!ModelState.IsValid)
                 {
-                    _logger.LogError("Invalid Configuration object sent from config.");
+                    _logger.LogError("Invalid Configuration object sent from client.");
                     return BadRequest("Invalid model object");
                 }
 
