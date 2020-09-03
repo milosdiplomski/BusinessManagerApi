@@ -8,6 +8,7 @@ namespace BusinessManager.DataAccess.Abstractions
 {
     public interface ISaleRepository : IGenericRepository<Sale>
     {
-
+        bool DeleteSale(Guid id);
+        void UpdateSale(Guid id, Sale sale);
     }
 }
