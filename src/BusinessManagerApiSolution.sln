@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessManager.Shared", "B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{126082C0-3F9E-4F43-8217-1509DB6920DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessManagerApiTests", "BusinessManagerApiTests\BusinessManagerApiTests.csproj", "{04A3F029-799B-402F-9C98-92F00765D981}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,9 +37,16 @@ Global
 		{4685F4EC-85F3-43FC-9EA9-A32FFFDCDA75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4685F4EC-85F3-43FC-9EA9-A32FFFDCDA75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4685F4EC-85F3-43FC-9EA9-A32FFFDCDA75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04A3F029-799B-402F-9C98-92F00765D981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04A3F029-799B-402F-9C98-92F00765D981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04A3F029-799B-402F-9C98-92F00765D981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04A3F029-799B-402F-9C98-92F00765D981}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{04A3F029-799B-402F-9C98-92F00765D981} = {126082C0-3F9E-4F43-8217-1509DB6920DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A30ADA8-6356-49E5-A567-AC26C2213112}
