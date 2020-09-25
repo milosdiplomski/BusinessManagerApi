@@ -34,3 +34,15 @@ steps:
     platform: '$(buildPlatform)'
     projects: '**/*Tests/*.csproj'
     configuration: '--configuration $(buildConfiguration)'
+    
+- task: DotNetCoreCLI@2
+  displayName: 'DotNet Publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+  inputs:
+    command: publish
+    publishWebProjects: false
+    projects: 'src/BusinessManagerApi/BusinessManagerApi.csproj'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: true
+    
+- task: PublishBuildArtifacts@1
+  displayName: 'publish artifacts'
