@@ -12,6 +12,11 @@ namespace BusinessManager.Shared.Validations
         public ProductValidator()
         {
 
+            RuleFor(x => x.Barcode)
+            .NotNull().WithMessage("Barcode must have a value").WithErrorCode("Error")
+            .NotEmpty().WithMessage("Barcode must have a value").WithErrorCode("Error");
+
+
         }
     }
 }
