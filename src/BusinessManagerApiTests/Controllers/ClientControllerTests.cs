@@ -190,7 +190,7 @@ namespace BusinessManagerApiTests.Controllers
             var result = await controller.UpdateClient(clientId, client);
 
             //Assert
-            Assert.IsType<OkObjectResult>(result);
+            Assert.IsType<NoContentResult>(result);
 
             Dispose();
         }
